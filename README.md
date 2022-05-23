@@ -1,7 +1,6 @@
-# Проект: Путешествие по России
+# Проект: Mesto
 
-https://lilia-halwbvr.github.io/russian-travel/
-
+https://lilia-halwbvr.github.io/mesto/
 
 **Интро**
 
@@ -16,5 +15,4 @@ https://lilia-halwbvr.github.io/russian-travel/
 * CSS
 * JavaScript
 
-https://lilia-halwbvr.github.io/mesto/
 
