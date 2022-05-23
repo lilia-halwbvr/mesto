@@ -1,0 +1,7 @@
+.element__like-button_inactive {
+  background-image: url(../../../../images/like.svg);
+}
+
+.element__like-button__active {
+  background-image: url(../../../../images/like__active-button.svg);
+}

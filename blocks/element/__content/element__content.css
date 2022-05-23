@@ -1,0 +1,9 @@
+.element__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px auto 31px;
+  min-width: 246px;
+  max-width: 90%;
+}
