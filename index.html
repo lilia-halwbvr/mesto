@@ -36,7 +36,7 @@
           <img class="element__image" alt="место" src="./images/photo_2022-05-14_13-45-16.jpg">
           <div class="element__content">
             <h2 class="element__content-title">Озеро Комо</h2>
-            <button type="button" class="element__like-button element__like-button_inactive"></button>
+            <button type="button" class="element__like-button"></button>
           </div>
         </div>
 
@@ -45,7 +45,7 @@
           <img class="element__image" alt="место" src="./images/photo_2022-05-14_13-45-08.jpg">
           <div class="element__content">
             <h2 class="element__content-title">Флоренция</h2>
-            <button type="button" class="element__like-button element__like-button_inactive"></button>
+            <button type="button" class="element__like-button"></button>
           </div>
         </div>
 
@@ -53,7 +53,7 @@
           <img class="element__image" alt="место" src="./images/photo_2022-05-14_13-45-21.jpg">
           <div class="element__content">
             <h2 class="element__content-title">Остров Сардиния</h2>
-            <button type="button" class="element__like-button element__like-button_inactive"></button>
+            <button type="button" class="element__like-button"></button>
           </div>
         </div>
 
@@ -61,7 +61,7 @@
           <img class="element__image" alt="место" src="./images/photo_2022-05-14_13-45-31.jpg">
           <div class="element__content">
             <h2 class="element__content-title">Тоскана</h2>
-            <button type="button" class="element__like-button element__like-button_inactive"></button>
+            <button type="button" class="element__like-button"></button>
           </div>
         </div>
 
@@ -69,7 +69,7 @@
           <img class="element__image" alt="место" src="./images/photo_2022-05-14_13-45-26.jpg">
           <div class="element__content">
             <h2 class="element__content-title">Озеро Гарда</h2>
-            <button type="button" class="element__like-button element__like-button_inactive"></button>
+            <button type="button" class="element__like-button"></button>
           </div>
         </div>
 
@@ -77,7 +77,7 @@
           <img class="element__image" alt="место" src="./images/photo_2022-05-14_13-45-36.jpg">
           <div class="element__content">
             <h2 class="element__content-title">Верона</h2>
-            <button type="button" class="element__like-button element__like-button_inactive"></button>
+            <button type="button" class="element__like-button"></button>
           </div>
         </div>
       </section>
@@ -86,21 +86,20 @@
       <p class="footer__copyright">&copy;2022 Mesto Russia</p>
     </footer>
   </div>
-  <div class="popup popup_invisible">
+  <div class="popup">
     <div class="popup__container">
       <button type="button" class="popup__close-button"></button>
       <form class="popup__form" name="popupForm" novalidate>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input name="user" type="text" class="popup__input popup__input-name" id="userName-input"
-          placeholder="Жак-Ив Кусто" pattern="^[a-zA-Zа-яА-я-\s]+$" required>
-        <div class="popup__void"></div>
-        <input name="job" type="text" class="popup__input popup__input-job" id="userAbout-input"
-          placeholder="Исследователь океана" pattern="^[a-zA-Zа-яА-я-\s]+$" required>
+        <input name="user" type="text" class="popup__input" id="userName-input" placeholder="Имя"
+          pattern="^[a-zA-Zа-яА-я-\s]+$" required>
+        <input name="job" type="text" class="popup__input" id="userAbout-input" placeholder="О себе"
+          pattern="^[a-zA-Zа-яА-я-\s]+$" required>
         <button type="submit" class="popup__submit-button">Сохранить</button>
       </form>
     </div>
   </div>
-  <script src="./script.js"></script>
+  <script src="./scripts/script.js"></script>
 </body>
 
 </html>
