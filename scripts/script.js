@@ -2,9 +2,9 @@ let popup = document.querySelector('.popup');
 let popupClose = document.querySelector('.popup__close-button');
 let popupName = document.querySelector('#userName-input')
 
-popupName.value = document.querySelector('.profile__name').textContent 
+// popupName.value = document.querySelector('.profile__name').textContent 
 let popupJob = document.querySelector('#userAbout-input');
-popupJob.value = document.querySelector('.profile__about').textContent;
+// popupJob.value = document.querySelector('.profile__about').textContent;
 // let popupSubmit = document.querySelector('.popup__submit-button');
 
 let popupEdit = document.querySelector('.profile__edit-button');
@@ -14,26 +14,28 @@ let popupForm = document.querySelector('.popup__form');
 // likes = document.querySelectorAll('.element__like-button');
 
 function openPopup() {
-   // popup.classList.remove('popup_invisible');
-   document.querySelector('.popup').style.display="flex";
-    popupTitle.textContent = popupName.value;
-    popupSubtitle.textContent = popupJob.value;
+  // popup.classList.remove('popup_invisible');
+  // document.querySelector('.popup').style.display = "flex";
+  popup.classList.add('popup_visible');
+  popupName.value = popupTitle.textContent;
+  popupJob.value = popupSubtitle.textContent;
 };
 
-popupEdit.addEventListener('click', openPopup); 
+popupEdit.addEventListener('click', openPopup);
 
 function closePopup() {
-    document.querySelector('.popup').style.display="none";
+  // document.querySelector('.popup').style.display = "none";
+  popup.classList.remove('popup_visible');
 };
 
 
 
 function formSubmitHandler(evt) {
-    evt.preventDefault();
-    popupTitle.textContent = popupName.value;
-    popupSubtitle.textContent = popupJob.value;
+  evt.preventDefault();
+  popupTitle.textContent = popupName.value;
+  popupSubtitle.textContent = popupJob.value;
 
-    closePopup()
+  closePopup()
 }
 
 // function onLike(data) {
@@ -50,10 +52,6 @@ function formSubmitHandler(evt) {
 
 // likes.forEach(like => like.addEventListener('click', onLike));
 
-popupForm.addEventListener('submit', formSubmitHandler); 
+popupForm.addEventListener('submit', formSubmitHandler);
 popupClose.addEventListener('click', closePopup);
 popupEdit.addEventListener('click', openPopup);
-
-
-
-
