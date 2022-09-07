@@ -30,66 +30,17 @@
         </div>
         <button type="button" class="profile__add-button"></button>
       </section>
-
       <section class="elements">
-        <div class="element">
-          <img class="element__image" alt="место" src="./images/photo_2022-05-14_13-45-16.jpg">
-          <div class="element__content">
-            <h2 class="element__content-title">Озеро Комо</h2>
-            <button type="button" class="element__like-button"></button>
-          </div>
-        </div>
-
-
-        <div class="element">
-          <img class="element__image" alt="место" src="./images/photo_2022-05-14_13-45-08.jpg">
-          <div class="element__content">
-            <h2 class="element__content-title">Флоренция</h2>
-            <button type="button" class="element__like-button"></button>
-          </div>
-        </div>
-
-        <div class="element">
-          <img class="element__image" alt="место" src="./images/photo_2022-05-14_13-45-21.jpg">
-          <div class="element__content">
-            <h2 class="element__content-title">Остров Сардиния</h2>
-            <button type="button" class="element__like-button"></button>
-          </div>
-        </div>
-
-        <div class="element">
-          <img class="element__image" alt="место" src="./images/photo_2022-05-14_13-45-31.jpg">
-          <div class="element__content">
-            <h2 class="element__content-title">Тоскана</h2>
-            <button type="button" class="element__like-button"></button>
-          </div>
-        </div>
-
-        <div class="element">
-          <img class="element__image" alt="место" src="./images/photo_2022-05-14_13-45-26.jpg">
-          <div class="element__content">
-            <h2 class="element__content-title">Озеро Гарда</h2>
-            <button type="button" class="element__like-button"></button>
-          </div>
-        </div>
-
-        <div class="element">
-          <img class="element__image" alt="место" src="./images/photo_2022-05-14_13-45-36.jpg">
-          <div class="element__content">
-            <h2 class="element__content-title">Верона</h2>
-            <button type="button" class="element__like-button"></button>
-          </div>
-        </div>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy;2022 Mesto Russia</p>
     </footer>
   </div>
-  <div class="popup">
+  <div class="popup" id='popup-edit-profile'>
     <div class="popup__container">
       <button type="button" class="popup__close-button"></button>
-      <form class="popup__form" name="popupForm" novalidate>
+      <form class="popup__form popup__form-edit " name="popupForm" novalidate>
         <h2 class="popup__title">Редактировать профиль</h2>
         <input name="user" type="text" class="popup__input" id="userName-input" placeholder="Имя"
           pattern="^[a-zA-Zа-яА-я-\s]+$" required>
@@ -99,6 +50,22 @@
       </form>
     </div>
   </div>
+
+
+  <div class="popup" id="popup-add-card">
+    <div class="popup__container">
+      <button type="button" class="popup__close-button"></button>
+      <form class="popup__form popup__form-add" name="popupForm" novalidate>
+        <h2 class="popup__title">Добавить картинку</h2>
+        <input name="link" type="text" class="popup__input" id="link-input" placeholder="Ссылка на картинку"
+          pattern="^[a-zA-Zа-яА-я-\s]+$" required>
+        <input name="description" type="text" class="popup__input" id="placeAbout-input" placeholder="Описание картинки"
+          pattern="^[a-zA-Zа-яА-я-\s]+$" required>
+        <button type="submit" class="popup__submit-button">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
   <script src="./scripts/script.js"></script>
 </body>
 
