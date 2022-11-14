@@ -75,14 +75,6 @@ function formSubmitHandler(evt) {
 
 
 
-
-
-
-
-
-
-
-
 popupFormEdit.addEventListener('submit', formSubmitHandler);
 popupEdit.addEventListener('click', openPopupEditProfile);
 

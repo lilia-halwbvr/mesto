@@ -92,12 +92,6 @@ popupAdd.addEventListener('click', openPopupAddCard);
 
 
 
-
-
-
-
-
-
  // let likes = document.querySelectorAll('.element__like-button')
 // function onLike(data) {
 //     let isActive = data.target.classList.contains('element__like-button__active');
