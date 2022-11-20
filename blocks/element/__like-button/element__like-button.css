@@ -5,7 +5,7 @@
   border: none;
   width: 22px;
   height: 19px;
-  background-image: url(../../../../images/like.svg);
+  background-image: url(../../../images/like.svg);
 }
 
 .element__like-button:hover {
