@@ -1,82 +1,121 @@
-import {renderCards} from './popupAddCard.js';
-import {popupAddCard} from './popupAddCard.js';
-import {cards} from './popupAddCard.js';
-import {removeCards} from './popupAddCard.js';
-
-
+import {
+  cards
+} from './cards.js';
 
 let popupEditProfile = document.querySelector('#popup-edit-profile');
-let popupName = document.querySelector('#userName-input')
+let popupName = document.querySelector('#userName-input');
 let popupJob = document.querySelector('#userAbout-input');
-let popupEdit = document.querySelector('.profile__edit-button');
-let popupTitle = document.querySelector('.profile__name');
-let popupSubtitle = document.querySelector('.profile__about');
-let popupFormEdit = document.querySelector('.popup__form-edit');
-let closeButtons = document.querySelectorAll('.popup__close-button')
+let popupEditButton = document.querySelector('.profile__edit-button');
+let popupNameForm = document.querySelector('.profile__name');
+let popupJobForm = document.querySelector('.profile__about');
+let closeButtons = document.querySelectorAll('.popup__close-button');
+let submitButtons = document.querySelectorAll('.popup__submit-button');
+let popupAddCard = document.querySelector('#popup-add-card');
+let popupAdd = document.querySelector('.profile__add-button');
 
 
-
-renderCards()
-let trashes = document.querySelectorAll('.element__trash');
-
-function removeCard(event) {
-  delete cards[event.target.id];
-  removeCards();
-  renderCards();
-  trashes = document.querySelectorAll('.element__trash');
-  trashes.forEach(trash => trash.addEventListener('click', removeCard))
-  
+//функция открытия попапа
+function openEditPopup() {
+  popupEditProfile.classList.add('popup_visible');
+  popupName.value = popupNameForm.textContent;
+  popupJob.value = popupJobForm.textContent;
 }
 
-
-trashes.forEach(trash => trash.addEventListener('click', removeCard))
-
-closeButtons.forEach(button => button.addEventListener('click', closePopup))
-
-
-function openPopupEditProfile() {
-  popupEditProfile.classList.add('popup_visible');
-  popupName.value = popupTitle.textContent;
-  popupJob.value = popupSubtitle.textContent;
-};
-
-popupEdit.addEventListener('click', openPopupEditProfile);
-
+// функция закрытия попапа
 function closePopup() {
   popupEditProfile.classList.remove('popup_visible');
   popupAddCard.classList.remove('popup_visible');
-};
-
+}
 
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
-  popupTitle.textContent = popupName.value;
-  popupSubtitle.textContent = popupJob.value;
+  popupNameForm.textContent = popupName.value;
+  popupJobForm.textContent = popupJob.value;
 
   closePopup()
 }
 
+// функция открытия попапа для добавления карточки
+function openAddPopup() {
+  popupAddCard.classList.add('popup_visible');
+}
 
-// let likes = document.querySelectorAll('.element__like-button')
-// function onLike(data) {
-//     let isActive = data.target.classList.contains('element__like-button__active');
-//     console.log(isActive)
-//     if (isActive) {
-//         data.target.classList.remove('element__like-button__active');
-//         data.target.classList.add('element__like-button_inactive');
-//     } else {
-//         data.target.classList.remove('element__like-button_inactive');
-//         data.target.classList.add('element__like-button__active');
-//     }
-// }
+function addCard(title, link) {
+  let titleNode = document.createElement('h2');
+  titleNode.className = 'element__content-title';
+  titleNode.textContent = title;
 
-// likes.forEach(like => like.addEventListener('click', onLike));
+  let like = document.createElement('button');
+  like.className = 'element__like-button';
+
+  like.addEventListener('click', onLike)
+
+  let image = document.createElement('img')
+  image.className = 'element__image';
+  image.src = link;
+  image.alt = 'место';
+
+  let content = document.createElement('div');
+  content.className = 'element__content';
+  content.appendChild(titleNode)
+  content.appendChild(like)
+
+  let trashButtonElement = document.createElement('button');
+  trashButtonElement.className = 'element__trash'
+  trashButtonElement.type = 'button'
+  trashButtonElement.addEventListener('click', deleteCard)
+
+  let newElement = document.createElement('div');
+  newElement.className = 'element';
+  newElement.appendChild(image)
+  newElement.appendChild(trashButtonElement)
+  newElement.appendChild(content)
+
+  document.querySelector('.elements').append(newElement)
+}
+
+function renderCards() {
+  cards.forEach(function (card) {
+    addCard(card.text, card.link)
+  })
+}
+
+function newCard() {
+  let popupAddLink = document.querySelector('#link-input');
+  let popupAddText = document.querySelector('#placeAbout-input');
+
+  closePopup()
+  console.log(popupAddLink.value)
+  console.log(popupAddText.value)
+  addCard(popupAddText.value, popupAddLink.value)
+}
 
 
+//ставим лайки
+function onLike(data) {
+  let islikeActive = data.target.classList.contains('element__like-button_active');
 
-popupFormEdit.addEventListener('submit', formSubmitHandler);
-popupEdit.addEventListener('click', openPopupEditProfile);
+  if (islikeActive) {
+    data.target.classList.remove('element__like-button_active');
+    data.target.classList.add('element__like-button');
+  } else {
+    data.target.classList.remove('element__like-button');
+    data.target.classList.add('element__like-button_active');
+  }
+}
+
+function deleteCard(data) {
+  data.target.parentNode.remove();
+}
 
 
-export {closePopup}; 
+popupAdd.addEventListener('click', openAddPopup);
+popupEditButton.addEventListener('click', openEditPopup);
+submitButtons.forEach(button => button.addEventListener('click', formSubmitHandler))
+closeButtons.forEach(button => button.addEventListener('click', closePopup))
+
+renderCards()
+
+let submitAddButton = document.querySelector('#submit-add-button');
+submitAddButton.addEventListener('click', newCard);
