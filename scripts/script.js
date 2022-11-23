@@ -9,12 +9,15 @@ let popupEditButton = document.querySelector('.profile__edit-button');
 let popupNameForm = document.querySelector('.profile__name');
 let popupJobForm = document.querySelector('.profile__about');
 let closeButtons = document.querySelectorAll('.popup__close-button');
-let submitButtons = document.querySelectorAll('.popup__submit-button');
 let popupAddCard = document.querySelector('#popup-add-card');
 let popupAdd = document.querySelector('.profile__add-button');
+let popupImage = document.querySelector('#popup-image');
+let submitAddButton = document.querySelector('#submit-add-button');
+let submitEditButton = document.querySelector('#submit-edit-button');
+let popupImageCloseButton = document.querySelector('.popup-image__button-close')
 
 
-//функция открытия попапа
+//функция открытия попапа редактирования
 function openEditPopup() {
   popupEditProfile.classList.add('popup_visible');
   popupName.value = popupNameForm.textContent;
@@ -25,16 +28,36 @@ function openEditPopup() {
 function closePopup() {
   popupEditProfile.classList.remove('popup_visible');
   popupAddCard.classList.remove('popup_visible');
+  popupImage.classList.remove('popup_visible');
 }
 
+let popups = document.querySelectorAll('.popup')
+let closeByEscape = (evt) => {
+  if(evt.key === 'Escape') {
+    popups.forEach()
+    // if(popup.classList.contains('popup_visible')) {
+    //  closePopup()
+   // } ????? 
+  }
+}
 
-function formSubmitHandler(evt) {
+popups.forEach(popup => popup.addEventListener('Escape', closeByEscape))
+
+
+
+function editProfileHandler(evt) {
   evt.preventDefault();
   popupNameForm.textContent = popupName.value;
   popupJobForm.textContent = popupJob.value;
 
   closePopup()
 }
+
+function addProfileHandler(evt) {
+  evt.preventDefault();
+  closePopup()
+}
+
 
 // функция открытия попапа для добавления карточки
 function openAddPopup() {
@@ -55,6 +78,7 @@ function addCard(title, link) {
   image.className = 'element__image';
   image.src = link;
   image.alt = 'место';
+  image.addEventListener('click', (event) => popupImageCard(event, link, title)) 
 
   let content = document.createElement('div');
   content.className = 'element__content';
@@ -71,9 +95,26 @@ function addCard(title, link) {
   newElement.appendChild(image)
   newElement.appendChild(trashButtonElement)
   newElement.appendChild(content)
-
   document.querySelector('.elements').append(newElement)
 }
+
+// open popup card full view 
+
+function popupImageCard(event, link, title) {
+  popupImage.childNodes[1].childNodes[3].src = link
+  popupImage.childNodes[1].childNodes[5].textContent = title
+  popupImage.classList.add('popup_visible')
+}
+
+// close popup card full view
+
+function closePopupImageCard() {
+  popupImage.classList.remove('popup_visible')
+}
+
+
+popupImageCloseButton.addEventListener('click', closePopupImageCard)
+
 
 function renderCards() {
   cards.forEach(function (card) {
@@ -86,8 +127,6 @@ function newCard() {
   let popupAddText = document.querySelector('#placeAbout-input');
 
   closePopup()
-  console.log(popupAddLink.value)
-  console.log(popupAddText.value)
   addCard(popupAddText.value, popupAddLink.value)
 }
 
@@ -112,10 +151,11 @@ function deleteCard(data) {
 
 popupAdd.addEventListener('click', openAddPopup);
 popupEditButton.addEventListener('click', openEditPopup);
-submitButtons.forEach(button => button.addEventListener('click', formSubmitHandler))
 closeButtons.forEach(button => button.addEventListener('click', closePopup))
 
 renderCards()
 
-let submitAddButton = document.querySelector('#submit-add-button');
+
 submitAddButton.addEventListener('click', newCard);
+submitAddButton.addEventListener('click', addProfileHandler)
+submitEditButton.addEventListener('click', editProfileHandler);

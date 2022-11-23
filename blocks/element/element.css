@@ -8,3 +8,8 @@
   position: relative;
   margin: 0;
 }
+
+
+.element:hover {
+  cursor: pointer;
+}
