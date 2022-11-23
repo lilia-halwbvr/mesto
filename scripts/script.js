@@ -31,17 +31,9 @@ function closePopup() {
   popupImage.classList.remove('popup_visible');
 }
 
-let popups = document.querySelectorAll('.popup')
-let closeByEscape = (evt) => {
-  if(evt.key === 'Escape') {
-    popups.forEach()
-    // if(popup.classList.contains('popup_visible')) {
-    //  closePopup()
-   // } ????? 
-  }
-}
 
-popups.forEach(popup => popup.addEventListener('Escape', closeByEscape))
+
+
 
 
 
@@ -78,7 +70,7 @@ function addCard(title, link) {
   image.className = 'element__image';
   image.src = link;
   image.alt = 'место';
-  image.addEventListener('click', (event) => popupImageCard(event, link, title)) 
+  image.addEventListener('click', () => popupImageCard(link, title)) 
 
   let content = document.createElement('div');
   content.className = 'element__content';
@@ -100,7 +92,7 @@ function addCard(title, link) {
 
 // open popup card full view 
 
-function popupImageCard(event, link, title) {
+function popupImageCard(link, title) {
   popupImage.childNodes[1].childNodes[3].src = link
   popupImage.childNodes[1].childNodes[5].textContent = title
   popupImage.classList.add('popup_visible')
@@ -159,3 +151,12 @@ renderCards()
 submitAddButton.addEventListener('click', newCard);
 submitAddButton.addEventListener('click', addProfileHandler)
 submitEditButton.addEventListener('click', editProfileHandler);
+
+
+//add close by escape
+
+document.onkeydown = function(evt) {
+  if(evt.key === 'Escape') {
+    closePopup()
+  }
+}
